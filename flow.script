@@ -1,0 +1,4 @@
+start;Are you having a good day?\nPls Say YES!;goodday|I'm Having a great day;badday|I'm Having a bad day
+goodday;That's fine. Fuck you. I'm Having a badday;badend|Get FUCKED
+badend;Fuck;badend|Get FUCKED
+badday;FUCK;badday|Get Fucked

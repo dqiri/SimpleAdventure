@@ -1,0 +1,13 @@
+start;"It's a bright and sunny day and it's about time for some action!"\n"Where else to go but to Actionville?";actionville|Go To Actionville!!!
+actionville;"Actionville is none other than the city that everybody knows and loves. What's Actionville like you ask?";moreaboutactionville| 
+moreaboutactionville;"What's the matter with you!"\n"Come and see for yourself!";g2av|See for yourself;g2av|naaaaah
+g2av;You board the train at Lame-o Station towards Actionville. The scenery unfolds before you in layers.\nBrown, and sparse into Green, and dense with Trees\nSmall Towns into Cities\nCities into silver, and of course Gold.\nThe speedy train eventually lurches to a stop as it pulls up to Action Station;exittrain|Step out of the Train
+exittrain;"There you are! I've been looking for you";whoareyou|Who are you?;letsgo|Let's Go!
+whoareyou;"Ah me, I'm your guide Loreina! Pleased to meet you! All visitors at Actionville will have a personal guide";noneed;I don't need a stinking guide;letsgo|Let's Go!
+noneed;"Sorry it's the rules!"\n"Actionville requires all persons to have special powers in order to go without a guide";whatpower|What powers do you have?;mypower|I don't have any powers!;why|Why?;letsgo|Let's Go
+mypower;"Some people have latent powers they need to discover and hone. Others... Well, they'll always need a guide.";letsgo|Got it... Let's go
+why;"In Actionville, people take Powers for granted... That's why a lot of the things are set up to facilitate people with Powers"\n"Good guys can have a fighting chance at the bad guys too."|letsgo;Let's GO
+whatpower;"I have the ability to look through clothes!"\n...\n"It's a joke!! I have the ability to freeze water!";coolpower|Cool Power!
+coolpower;"That's its name, don't wear it out... teehee ;)";letsgo|Let's Go Already!!!
+letsgo;"Right Away!";exitstation|Exit Station
+exitstation;Still construction;exitstation|ok
