@@ -33,43 +33,52 @@ def parseScript(script):
     #print "Parsing", scriptfile.name
 
     line = scriptfile.readline()
+    linec = str(line)
 
+    lineno = 0
     notfullfilled = set()
-    while line:
+    try:
+        while line:
+            lineno += 1
 #Check if it's just a blank line,
-        if len(line) < 2:
-            continue
+            if len(line) < 2:
+                continue
 #Commented line
-        if line[0] == '#':
-            continue
+            if line[0] == '#':
+                continue
 #Remove unnecessary stuff
-        if line[-1] == '\n':
-            line = line[:-1]
+            if line[-1] == '\n':
+                line = line[:-1]
 #Splitting by delimiters
-        line = line.split(';')
+            line = line.split(';')
 
-        if len(line) < 3:
-            print("Each line should consist of the following: label, content, next...")
-            raise AssertionError
-        if line[0] in parsed:
-            print(line[0], "already points to previous content", parsed[line[0]])
-            raise AssertionError
-        choicesParsed = []
-        for cp in line[2:]:
-            choicelabel, choicecontent = cp.split('|')
-            choicesParsed.append([choicelabel, choicecontent])
-            if choicelabel in notfullfilled:
-                notfullfilled.remove(choicelabel)
-            elif choicelabel not in parsed:
-                notfullfilled.add(choicelabel)
+            if len(line) < 3:
+                print("Each line should consist of the following: label, content, next...")
+                raise AssertionError
+            if line[0] in parsed:
+                print(line[0], "already points to previous content", parsed[line[0]])
+                raise AssertionError
+            choicesParsed = []
+            for cp in line[2:]:
+                choicelabel, choicecontent = cp.split('|')
+                choicesParsed.append([choicelabel, choicecontent])
+                if choicelabel in notfullfilled:
+                    notfullfilled.remove(choicelabel)
+                elif choicelabel not in parsed:
+                    notfullfilled.add(choicelabel)
 
 #Used for interpreting \n
-        line[1] = line[1].split('\\n')
-        line[1] = '\n'.join(line[1])
+            line[1] = line[1].split('\\n')
+            line[1] = '\n'.join(line[1])
 
-        """               [content, [choiceslabel, choicecontent]]"""
-        parsed[line[0]] = [line[1], choicesParsed]
-        line = scriptfile.readline()
+            """               [content, [choiceslabel, choicecontent]]"""
+            parsed[line[0]] = [line[1], choicesParsed]
+            line = scriptfile.readline()
+            linec = str(line)
+    except ValueError as e:
+        print("At line", lineno, e)
+        print(linec)
+        raise ValueError
     count = 0
     for i in notfullfilled:
         if i not in parsed:
